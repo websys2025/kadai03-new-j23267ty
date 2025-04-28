@@ -21,6 +21,8 @@
             // 商品一覧の表示関数
             function showItemList() {
                 console.log("商品は以下の" + items.length + "種類です。");
+                 for (let i = 0; i < items.length; i++) {
+                console.log("商品番号: " + items[i].id + ", 商品名: " + items[i].name + ", 金額: " + items[i].price + ", 在庫数: " + items[i].stock);
 
                 // 配列の内容を項目毎に出力
                 // ここにコードを書く
@@ -29,6 +31,17 @@
 
             // 商品購入の関数
             function buyItem(no) {
+                if (no < 1 || no > items.length) {
+                console.log(no + "は無効な商品番号です。番号は1～" + items.length + "で指定してください。");
+            } else {
+                let item = items[no - 1];
+                console.log("商品番号: " + item.id + ", 商品名: " + item.name + "を購入します。");
+                if (item.stock > 0) {
+                    item.stock -= 1;
+                } else {
+                    console.log("在庫がありません。");
+                }
+            }
                 // ここにコードを書く
                 showItemList(); // 商品一覧の表示関数呼び出し
             }
